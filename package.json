@@ -1,8 +1,22 @@
 {
+  "name": "hardhat-trading-bot",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "start": "node bot.js"
+  },
   "dependencies": {
-    "hardhat": "^2.18.1"
+    "big.js": "^6.2.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
   },
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^3.0.0"
+    "@aave/core-v3": "^1.17.2",
+    "@nomicfoundation/hardhat-toolbox": "3.0.0",
+    "@openzeppelin/contracts": "4.9.1",
+    "@uniswap/v2-periphery": "1.1.0-beta.0",
+    "hardhat": "2.15.0"
   }
 }
