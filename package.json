@@ -13,7 +13,7 @@
     "express": "^4.18.2"
   },
   "devDependencies": {
-    "@aave/core-v3": "^1.17.2",
+    "@balancer-labs/v2-interfaces": "0.4.0",
     "@nomicfoundation/hardhat-toolbox": "3.0.0",
     "@openzeppelin/contracts": "4.9.1",
     "@uniswap/v2-periphery": "1.1.0-beta.0",

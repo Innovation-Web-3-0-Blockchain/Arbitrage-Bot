@@ -52,7 +52,7 @@ To explore and engage with the `ArbitrageBot` project, follow these steps:
 
 ## Create and Setup .env File
 
-Before deploying the arbitrage contract, create a `.env` file with the following components:
+Before deploying the `Arbitrage.sol` contract, create a **.env** file with the following components:
 
   ```env
   ARB_FOR=""             // Insert the Token0 address between the quotation marks
@@ -62,28 +62,7 @@ Before deploying the arbitrage contract, create a `.env` file with the following
   GAS_LIMIT=""           // Replace the quotation marks with the desired maximum gas limit
   GAS_PRICE=""           // Replace the quotation marks with the desired gwei price
   ```
-For an example of what the `.env` file should look like, please see our [Hardhat Trading Bot Project Documentations](.env.example).
-
-## Smart Contract Deployment
-
-***We will be deploying the arbitrage contract on Polygon Mumbai testnet.***
-
-To deploy the arbitrage contract, follow these steps:
-
-1. Set your deployment environment by forking the network you want to use for the Hardhat node. We recommend using your own RPC URL for better reliability. Create your own Web3 API keys on the Infura website: [Infura](https://www.infura.io/)
-
-2. Add the following lines to the top of your `.env` file:
-
-   ```env
-   YOUR_API_KEY=""        // Paste your Web3 API key in between the quotation marks
-   YOUR_PRIVATE_KEY=""    // Paste your wallet private key in between the quotation marks
-   ```
-  
-3. Command to fork Polygon Mumbai chain for your Hardhat node, using your own RPC URL:
-
-   ```bash
-   npx hardhat node --fork https://polygon-mumbai.infura.io/v3/PASTE_YOUR_API_KEY_HERE
-   ```
+For an example of what the **.env** file should look like, please see our [Hardhat Trading Bot Project Documentations](./Hardhat-Trading-Bot-Project-Documentations/.env.example).
 
 ## Contributions
 
