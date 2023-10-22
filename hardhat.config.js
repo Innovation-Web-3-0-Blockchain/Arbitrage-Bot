@@ -1,8 +1,8 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 
-const POLYGON_RPC_URL = `https://polygon-mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`;
-const POLYGON_MUMBAI_RPC_URL = `https://polygon-mumbai.infura.io/v3/${process.env.INFURA_API_KEY}`;
+const ETHEREUM_MAINNET_RPC_URL = `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`;
+const ETHEREUM_SEPOLIA_RPC_URL = `https://sepolia.infura.io/v3/${process.env.INFURA_API_KEY}`;
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "";
 
 module.exports = {
@@ -10,18 +10,18 @@ module.exports = {
   networks: {
     hardhat: {
       forking: {
-        url: POLYGON_RPC_URL
+        url: ETHEREUM_MAINNET_RPC_URL
       },
       chainId: 31337,
     },
     localhost: {
       chainId: 31337,
     },
-    mumbai: {
-      url: POLYGON_MUMBAI_RPC_URL,
+    sepolia: {
+      url: ETHEREUM_SEPOLIA_RPC_URL,
       accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
       saveDeployments: true,
-      chainId: 80001,
+      chainId: 11155111,
     },
   },
   namedAccounts: {
