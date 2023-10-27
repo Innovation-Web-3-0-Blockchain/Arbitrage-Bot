@@ -1,6 +1,6 @@
-# Hardhat-Trading-Bot
+# Arbitrage-Bot
 
-Welcome to the `Hardhat-Trading-Bot` repository, where we aim to demystify basic arbitrage strategies and empower aspiring blockchain developers to experience the world of arbitrage. We provide comprehensive code documentation and step-by-step instructions to make learning accessible, allowing developers to grasp the concepts and eventually craft their own effective strategies.
+Welcome to the `Arbitrage-Bot` repository, where we aim to demystify basic arbitrage strategies and empower aspiring blockchain developers to experience the world of arbitrage. We provide comprehensive code documentation and step-by-step instructions to make learning accessible, allowing developers to grasp the concepts and eventually craft their own effective strategies.
 
 ## Table of Contents
 
@@ -15,6 +15,7 @@ Welcome to the `Hardhat-Trading-Bot` repository, where we aim to demystify basic
 - [License](#license)
 - [Project Updates](#project-updates)
 - [Additional Resources](#additional-resources)
+- [Donations](#donations)
 
 ## What is Arbitrage?
 
@@ -34,12 +35,12 @@ Our codebase is meticulously documented with comprehensive comments, providing c
 
 ## Getting Started
 
-To explore and engage with the `ArbitrageBot` project, follow these steps:
+To explore and engage with our `Arbitrage-Bot` project, follow these steps:
 
 1. Clone this repository to your local machine.
 
    ```bash
-   git clone https://github.com/CyberAnon1010101/Blockchain-ArbitrageBot.git
+   git clone https://github.com/Innovation-Web-3-0-Blockchain/Arbitrage-Bot.git
    ```
 
 2. Ensure you have `node.js` and `npm` installed in your environment.
@@ -62,7 +63,7 @@ Before deploying the `Arbitrage.sol` contract, create a **.env** file with the f
   GAS_LIMIT=""           // Replace the quotation marks with the desired maximum gas limit
   GAS_PRICE=""           // Replace the quotation marks with the desired gwei price
   ```
-For an example of what the **.env** file should look like, please see our [Hardhat Trading Bot Project Documentations](./Hardhat-Trading-Bot-Project-Documentations/.env.example).
+For an example of what the **.env** file should look like, please see our [Hardhat Trading Bot Project Documentations](./Arbitrage-Bot-Project-Documentations/.env.example).
 
 ## Contributions
 
@@ -81,3 +82,23 @@ As the DeFi ecosystem continues to evolve, we will monitor and update this proje
 For additional resources on trading bots and arbitrage strategies, please stay tuned for upcoming updates.
 
 ***Will be updated soon***
+
+## Donations
+
+### Our Commitment
+
+We firmly believe that blockchain development is a profession that will be in high demand in the coming years. We dedicate a significant amount of our personal time to curate and publish content on GitHub to ensure that beginners have easy access to understandable information for learning how to code. We also invest substantial effort in staying current with the latest upgrades in the field.
+
+### Our Values
+
+We do not use any form of social media or engage in marketing activities. Our principles are rooted in open source and privacy, and we do not receive compensation for our contributions to GitHub. Furthermore, we do not endorse or have affiliations with any other projects.
+
+### Supporting Us
+
+While we remain committed to providing valuable resources for aspiring blockchain developers, any donations are greatly appreciated. Your support will help us offset the time and effort we invest in these projects to facilitate access to accessible information.
+
+### Donation Options
+
+We welcome contributions in Bitcoin and Monero, and you can send contributions by scanning one of the addresses in the QR codes at the following link: [Donate to Innovation Web 3.0](https://innovationweb3.github.io/)
+
+Thank you for your support and for being part of our community!
