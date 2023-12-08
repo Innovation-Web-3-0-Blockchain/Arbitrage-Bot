@@ -1,4 +1,4 @@
-require("dotenv").config()
+ require("dotenv").config()
 
 const hre = require("hardhat")
 
@@ -10,8 +10,8 @@ const { provider, uFactory, uRouter, sFactory, sRouter } = require('../helpers/i
 const V2_FACTORY_TO_USE = uFactory
 const V2_ROUTER_TO_USE = uRouter
 
-const UNLOCKED_ACCOUNT = '0xdEAD000000000000000042069420694206942069' // LINK account to impersonate 
-const AMOUNT = '40500000000000' // 40,500,000,000,000 LINK -- Tokens will automatically be converted to wei
+const UNLOCKED_ACCOUNT = '0xF977814e90dA44bFA03b6295A0616a897441aceC' // LINK account to impersonate 
+const AMOUNT = '50000' // 50,000 LINK -- Tokens will automatically be converted to wei
 
 async function main() {
   // Fetch contracts
@@ -24,17 +24,17 @@ async function main() {
 
   const pair = await getPairContract(V2_FACTORY_TO_USE, ARB_AGAINST.address, ARB_FOR.address, provider)
 
-  // Fetch price of LINK/USDC before we execute the swap
+  // Fetch price of LINK/WETH before we execute the swap
   const priceBefore = await calculatePrice(pair)
 
   await manipulatePrice([ARB_AGAINST, ARB_FOR], token0Contract)
 
-  // Fetch price of LINK/USDC after the swap
+  // Fetch price of LINK/WETH after the swap
   const priceAfter = await calculatePrice(pair)
 
   const data = {
-    'Price Before': `1 USDC = ${Number(priceBefore).toFixed(0)} LINK`,
-    'Price After': `1 USDC = ${Number(priceAfter).toFixed(0)} LINK`,
+    'Price Before': `1 WETH = ${Number(priceBefore).toFixed(0)} LINK`,
+    'Price After': `1 WETH = ${Number(priceAfter).toFixed(0)} LINK`,
   }
 
   console.table(data)

@@ -16,7 +16,7 @@ const app = express();
 const server = http.createServer(app).listen(PORT, () => console.log(`Listening on ${PORT}\n`));
 
 // Serve static files (e.g., HTML, CSS, JavaScript) from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Enable CORS (Cross-Origin Resource Sharing) with specific configuration
 app.use(cors({ credentials: true, origin: '*' }));

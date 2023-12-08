@@ -9,8 +9,15 @@ Welcome to the `Arbitrage-Bot` repository, where we aim to demystify basic arbit
 - [Verification and Security](#verification-and-security)
 - [Commented Code](#commented-code)
 - [Getting Started](#getting-started)
+  - [Clone the Repository](#clone-the-repository)
+  - [Install Dependencies](#install-dependencies)
 - [Create and Setup .env File](#create-and-setup-env-file)
-- [Smart Contract Deployment](#smart-contract-deployment)
+- [Set Deployment Environment](#set-deployment-environment)
+- [Launch Hardhat Node](#launch-hardhat-node)
+- [Deploy Trading Contract](#deploy-trading-contract)
+- [Start the Trading Bot](#start-the-trading-bot)
+- [Trigger the Arbitrage](#trigger-the-arbitrage)
+- [Deploying Trading Bot on Mainnet](#deploying-trading-bot-on-mainnet)
 - [Contributions](#contributions)
 - [License](#license)
 - [Project Updates](#project-updates)
@@ -35,35 +42,91 @@ Our codebase is meticulously documented with comprehensive comments, providing c
 
 ## Getting Started
 
-To explore and engage with our `Arbitrage-Bot` project, follow these steps:
+### Clone the Repository
 
-1. Clone this repository to your local machine.
+Clone this repository to your local machine.
 
-   ```bash
-   git clone https://github.com/Innovation-Web-3-0-Blockchain/Arbitrage-Bot.git
-   ```
+```bash
+git clone https://github.com/Innovation-Web-3-0-Blockchain/Arbitrage-Bot.git
+```
 
-2. Ensure you have `node.js` and `npm` installed in your environment.
+### Install Dependencies
 
-3. Install the necessary dependencies by running the following command in your terminal:
+Ensure you have `node.js` and `npm` installed in your environment. Install the necessary dependencies by running the following command in your terminal:
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
 ## Create and Setup .env File
 
 Before deploying the `Arbitrage.sol` contract, create a **.env** file with the following components:
 
-  ```env
-  ARB_FOR=""             // Insert the Token0 address between the quotation marks
-  ARB_AGAINST=""         // Insert the Token1 address between the quotation marks 
-  PRICE_DIFFERENCE=""    // Replace the quotation marks with the price difference between the 2 DEXs 
-  UNITS=""               // Replace the quotation marks with the price reported
-  GAS_LIMIT=""           // Replace the quotation marks with the desired maximum gas limit
-  GAS_PRICE=""           // Replace the quotation marks with the desired gwei price
-  ```
-For an example of what the **.env** file should look like, please see our [Hardhat Trading Bot Project Documentations](./Arbitrage-Bot-Project-Documentations/.env.example).
+```env
+ARB_FOR=""             // Insert the Token0 address between the quotation marks
+ARB_AGAINST=""         // Insert the Token1 address between the quotation marks 
+PRICE_DIFFERENCE=""    // Replace the quotation marks with the price difference between the 2 DEXs 
+UNITS=""               // Replace the quotation marks with the price reported
+GAS_LIMIT=""           // Replace the quotation marks with the desired maximum gas limit
+GAS_PRICE=""           // Replace the quotation marks with the desired gwei price
+```
+
+For an example of what the **.env** file should look like, please see our [Arbitrage Bot Project Documentations](./Arbitrage-Bot-Project-Documentations/.env.example).
+
+**IMPORTANT NOTE:** Make sure that your **.env** file is private, and that you never share its contents.
+
+## Set Deployment Environment
+
+1. Set your deployment environment by forking the network you want to use for the Hardhat node. We recommend using your own RPC URL for better reliability. You can create your own Web3 API keys on the Infura website: [Infura](https://www.infura.io/)
+
+2. Add the following at the top of your **.env** file:
+
+```env
+API_KEY=""        // Insert your Web3 API key between the quotation marks
+PRIVATE_KEY=""    // Insert any Hardhat wallet private key between the quotation marks
+```
+
+## Launch Hardhat Node
+
+Command to launch Hardhat node:
+
+```bash
+npx hardhat node    
+```
+
+## Deploy Trading Contract
+
+Command to deploy trading contract:
+
+```bash
+npx hardhat run --network localhost scripts/1_deploy.js 
+```
+
+In your command line, you will see the address that the contract has been deployed to. Copy the address, then head to the [Config File](./config.json) then paste the address in between the quotation marks of the `ARBITRAGE_ADDRESS`
+
+## Start the Trading Bot 
+
+Open a new command line window then use the command to deploy the trading bot script:
+
+```bash
+node bot.js
+```
+
+## Trigger the Arbitrage 
+
+Because we forked the Ethereum mainnet, the state of the blockchain is frozen at the moment that it got forked so the state doesn't get updated. We need to manipulate the price of the token that gets traded against to trigger the bot to execute the arbitrage trade.
+
+**Note:** This only manipulates token price in your local blockchain not on the actual one.
+
+Open a new command line window then use the following command to trigger the arbitrage:
+
+```bash
+npx hardhat run --network localhost scripts/2_manipulate.js
+```
+
+## Deploying Trading Bot on Mainnet 
+
+Please view our [Arbitrage Bot Project Documentations](./Arbitrage-Bot-Project-Documentations/Mainnet.md) to view how to deploy the trading bot for arbitrage on a mainnet.
 
 ## Contributions
 
@@ -71,7 +134,7 @@ Contributions to this project are welcome and encouraged. If you identify any bu
 
 ## License
 
-This project is licensed under the MIT License. For details, please refer to the [LICENSE](LICENSE) file.
+This project does not use a license.
 
 ## Project Updates
 
@@ -79,15 +142,9 @@ As the DeFi ecosystem continues to evolve, we will monitor and update this proje
 
 ## Additional Resources
 
-For additional resources on trading bots and arbitrage strategies, please stay tuned for upcoming updates.
-
-***Will be updated soon***
+Explore additional resources in our [Arbitrage Bot Project-Documentation](./Arbitrage-Bot-Project-Documentations).
 
 ## Donations
-
-### Our Commitment
-
-We firmly believe that blockchain development is a profession that will be in high demand in the coming years. We dedicate a significant amount of our personal time to curate and publish content on GitHub to ensure that beginners have easy access to understandable information for learning how to code. We also invest substantial effort in staying current with the latest upgrades in the field.
 
 ### Our Values
 

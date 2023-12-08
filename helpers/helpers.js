@@ -29,7 +29,7 @@ async function getTokenAndContract(_token0Address, _token1Address, _provider) {
     // Fetch and structure token information
     const token0 = {
         address: _token0Address,
-        decimals: 6,
+        decimals: 18,
         symbol: await token0Contract.symbol(),
         name: await token0Contract.name()
     }

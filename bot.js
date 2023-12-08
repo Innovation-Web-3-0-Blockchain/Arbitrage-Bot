@@ -9,7 +9,7 @@ const { provider, uFactory, uRouter, sFactory, sRouter, arbitrage } = require('.
 
 // -- .ENV VALUES HERE -- //
 const arbFor = process.env.ARB_FOR // This is the address of token we are attempting to arbitrage (WETH)
-const arbAgainst = process.env.ARB_AGAINST // SHIB
+const arbAgainst = process.env.ARB_AGAINST // LINK
 const units = process.env.UNITS // Used for price display/reporting
 const difference = process.env.PRICE_DIFFERENCE
 const gasLimit = process.env.GAS_LIMIT
@@ -172,14 +172,14 @@ const determineProfitability = async (_routerPath, _token0Contract, _token0, _to
      * - https://docs.uniswap.org/contracts/v2/reference/smart-contracts/library#getamountsout
      */
 
-    // This returns the amount of USDC needed to swap for X amount of LINK
+    // This returns the amount of WETH needed to swap for X amount of LINK
     const estimate = await _routerPath[0].getAmountsIn(minAmount, [_token0.address, _token1.address])
 
-    // This returns the amount of USDC for swapping X amount of LINK
+    // This returns the amount of WETH for swapping X amount of LINK
     const result = await _routerPath[1].getAmountsOut(estimate[1], [_token1.address, _token0.address])
 
-    console.log(`Estimated amount of USDC needed to buy enough LINK on ${exchangeToBuy}\t\t| ${ethers.formatUnits(estimate[0], 'ether')}`)
-    console.log(`Estimated amount of USDC returned after swapping LINK on ${exchangeToSell}\t| ${ethers.formatUnits(result[1], 'ether')}\n`)
+    console.log(`Estimated amount of WETH needed to buy enough LINK on ${exchangeToBuy}\t\t| ${ethers.formatUnits(estimate[0], 'ether')}`)
+    console.log(`Estimated amount of WETH returned after swapping LINK on ${exchangeToSell}\t| ${ethers.formatUnits(result[1], 'ether')}\n`)
 
     const { amountIn, amountOut } = await simulate(estimate[0], _routerPath, _token0, _token1)
     const amountDifference = amountOut - amountIn
@@ -200,11 +200,11 @@ const determineProfitability = async (_routerPath, _token0Contract, _token0, _to
       'ETH Balance After': ethBalanceAfter,
       'ETH Spent (gas)': estimatedGasCost,
       '-': {},
-      'USDC Balance BEFORE': usdcBalanceBefore,
-      'USDC Balance AFTER': usdcBalanceAfter,
-      'USDC Gained/Lost': usdcBalanceDifference,
+      'WETH Balance BEFORE': wethBalanceBefore,
+      'WETH Balance AFTER': wethBalanceAfter,
+      'WETH Gained/Lost': wethBalanceDifference,
       '-': {},
-      'Total Gained/Lost': usdcBalanceDifference - estimatedGasCost
+      'Total Gained/Lost': wethBalanceDifference - estimatedGasCost
     }
 
     console.table(data)
@@ -269,9 +269,9 @@ const executeTrade = async (_routerPath, _token0Contract, _token1Contract) => {
     'ETH Balance After': ethers.formatUnits(ethBalanceAfter, 'ether'),
     'ETH Spent (gas)': ethers.formatUnits(ethBalanceDifference.toString(), 'ether'),
     '-': {},
-    'USDC Balance BEFORE': ethers.formatUnits(tokenBalanceBefore, 'ether'),
-    'USDC Balance AFTER': ethers.formatUnits(tokenBalanceAfter, 'ether'),
-    'USDC Gained/Lost': ethers.formatUnits(tokenBalanceDifference.toString(), 'ether'),
+    'WETH Balance BEFORE': ethers.formatUnits(tokenBalanceBefore, 'ether'),
+    'WETH Balance AFTER': ethers.formatUnits(tokenBalanceAfter, 'ether'),
+    'WETH Gained/Lost': ethers.formatUnits(tokenBalanceDifference.toString(), 'ether'),
     '-': {},
     'Total Gained/Lost': `${ethers.formatUnits((tokenBalanceDifference - ethBalanceDifference).toString(), 'ether')} ETH`
   }
