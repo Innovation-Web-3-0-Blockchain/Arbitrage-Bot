@@ -16,12 +16,13 @@ Welcome to the `Arbitrage-Bot` repository, where we aim to demystify basic arbit
 - [Launch Hardhat Node](#launch-hardhat-node)
 - [Deploy Trading Contract](#deploy-trading-contract)
 - [Start the Trading Bot](#start-the-trading-bot)
-- [Trigger the Arbitrage](#trigger-the-arbitrage)
+- [Trigger the Arbitrage ](#trigger-the-arbitrage )
+- [Additional Information](#additional-information)
+- [Strategy Overview](#strategy-overview)
 - [Deploying Trading Bot on Mainnet](#deploying-trading-bot-on-mainnet)
 - [Contributions](#contributions)
 - [License](#license)
 - [Project Updates](#project-updates)
-- [Additional Resources](#additional-resources)
 - [Donations](#donations)
 
 ## What is Arbitrage?
@@ -102,9 +103,9 @@ Command to deploy trading contract:
 npx hardhat run --network localhost scripts/1_deploy.js 
 ```
 
-In your command line, you will see the address that the contract has been deployed to. Copy the address, then head to the [Config File](./config.json) then paste the address in between the quotation marks of the `ARBITRAGE_ADDRESS`
+In your command line, you will see the address that the contract has been deployed to. Copy the address, then head to the [Config](./config.json) file then paste the address in between the quotation marks of the *ARBITRAGE_ADDRESS*
 
-## Start the Trading Bot 
+## Start the Bot 
 
 Open a new command line window then use the command to deploy the trading bot script:
 
@@ -112,11 +113,13 @@ Open a new command line window then use the command to deploy the trading bot sc
 node bot.js
 ```
 
+Please see our [Arbitrage Bot Project Documentations](./Arbitrage-Bot-Project-Documentations/Trading-Bot-Functions-Explanation.md) for a detailed explanation of the functions of the trading bot.
+
+
 ## Trigger the Arbitrage 
 
-Because we forked the Ethereum mainnet, the state of the blockchain is frozen at the moment that it got forked so the state doesn't get updated. We need to manipulate the price of the token that gets traded against to trigger the bot to execute the arbitrage trade.
+Because we forked the Ethereum mainnet, the state of the blockchain is frozen at the moment that it got forked so the state doesn't get updated. We need to manipulate the price of the token that gets traded against in order to trigger the bot to execute an arbitrage trade.
 
-**Note:** This only manipulates token price in your local blockchain not on the actual one.
 
 Open a new command line window then use the following command to trigger the arbitrage:
 
@@ -124,9 +127,22 @@ Open a new command line window then use the following command to trigger the arb
 npx hardhat run --network localhost scripts/2_manipulate.js
 ```
 
-## Deploying Trading Bot on Mainnet 
+Keep in mind, after running this script, you may need to restart your hardhat node, and re-deploy contracts to properly retest. 
 
-Please view our [Arbitrage Bot Project Documentations](./Arbitrage-Bot-Project-Documentations/Mainnet.md) to view how to deploy the trading bot for arbitrage on a mainnet.
+
+**Note** This step only manipulates token price in your local blockchain not on the actual one. If you are doing an arbitrage for a different *ERC20* token other than the one in the provided example which are *(LINK/WETH)*. Make sure you modify the unlocked account, you will need to go on the block explorers of the blockchain you are using and find a *WHALE ADDRESS*. Also make sure you modify the amount of tokens you want that account to spent in order to manipulate price then you may need to adjust profitability reporting in the `executeTrade` function.
+
+## Additional Information
+
+- The [Server](./helpers/server.js) script is responsible for spinning up a local server.
+
+## Strategy Overview
+
+The current strategy implemented is only shown as an example alongside with the **manipulate.js** script. After we manipulate price on Uniswap, we fetch the reserves on Uniswap & Sushiswap and determine the lower *LINK* amount by dividing the lower amount by half. Based off of the strategy you plan to use dividing by half may not be the most optimal.
+
+## Using Trading Bot on Mainnet 
+
+Please view our [Arbitrage Bot Project Documentations](./Arbitrage-Bot-Project-Documentations/Mainnet.md) to view how to use the trading bot for arbitrage on a mainnet.
 
 ## Contributions
 
@@ -139,10 +155,6 @@ This project does not use a license.
 ## Project Updates
 
 As the DeFi ecosystem continues to evolve, we will monitor and update this project to align with the latest developments and best practices. Stay tuned for updates and improvements!
-
-## Additional Resources
-
-Explore additional resources in our [Arbitrage Bot Project-Documentation](./Arbitrage-Bot-Project-Documentations).
 
 ## Donations
 
@@ -158,4 +170,4 @@ While we remain committed to providing valuable resources for aspiring blockchai
 
 We welcome contributions in Bitcoin and Monero, and you can send contributions by scanning one of the addresses in the QR codes at the following link: [Donate to Innovation Web 3.0](https://innovationweb3.github.io/)
 
-Thank you for your support and for being part of our community!
+We extend our gratitude for exploring our project and thank you for your support.
